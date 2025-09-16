@@ -1,10 +1,11 @@
+import random
 import sys
 
 import pygame.display
 from pygame import Surface, Rect
 from pygame.font import Font
 
-from code.Const import C_WITHE, WIN_WIDTH, WIN_HEIGHT
+from code.Const import C_WITHE, WIN_WIDTH, WIN_HEIGHT, EVENT_ENEMY
 from code.Entity import Entity
 from code.EntityFactory import EntityFactory
 
@@ -19,6 +20,7 @@ class Level:
         self.entity_list: list[Entity] = []
         self.entity_list.extend(EntityFactory.get_entity('Level1Bg'))
         self.entity_list.append(EntityFactory.get_entity('Player1'))
+        pygame.time.set_timer(EVENT_ENEMY, 4000)
 
     def run(self):
         clock = pygame.time.Clock()
@@ -31,6 +33,9 @@ class Level:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
+                if event.type == EVENT_ENEMY:
+                    choice = random.choice(('Enemy1', 'Enemy2'))
+                    self.entity_list.append(EntityFactory.get_entity(choice))
 
             self.level_text(14, f'{self.name} - Timeout: {self.timeout / 1000:.1f}s', C_WITHE, (10, 5))
             self.level_text(14, f'fps: {clock.get_fps(): 0f}', C_WITHE, (10, WIN_WIDTH - 35))

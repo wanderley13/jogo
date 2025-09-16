@@ -1,6 +1,10 @@
+import pygame
+
 COLOR_RED = (178, 34, 34)
 C_WITHE = (255, 255, 255)
 COLOR_YELLOW = (255, 255, 0)
+
+EVENT_ENEMY = pygame.USEREVENT + 1
 
 ENTITY_SPEED = {
     'Level1Bg0': 1,
@@ -10,13 +14,13 @@ ENTITY_SPEED = {
     'Level1Bg4': 1,
     'Level1Bg5': 1,
     'Level1Bg6': 1,
-    'Player1': 3
+    'Player1': 3,
+    'Enemy1': 1,
+    'Enemy2': 2
 }
-
 
 MENU_OPTION = ('JOGAR',
                'SAIR')
-
 
 WIN_WIDTH = 1820
 WIN_HEIGHT = 920
