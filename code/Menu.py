@@ -2,24 +2,24 @@ import pygame.image
 from pygame import Surface, Rect
 from pygame.font import Font
 
-from code.Const import WIN_WIDTH, COLOR_ORANGE, MENU_OPTION, C_WITHE, COLOR_YELLOW
+from code.Const import WIN_WIDTH, COLOR_RED, MENU_OPTION, C_WITHE, COLOR_YELLOW
 
 
 class Menu:
 
     def __init__(self, window):
         self.window = window
-        self.surf = pygame.image.load('./assent/MenuBg.png')
+        self.surf = pygame.image.load('./asset/MenuBg.png.png').convert_alpha()
         self.rect = self.surf.get_rect(left=0, top=0)
 
     def run(self):
         menu_option = 0
-        pygame.mixer_music.load('./assent/Menu.mp3')
+        pygame.mixer_music.load('./asset/Menu.mp3.wav')
         pygame.mixer_music.play(-1)
         while True:
             self.window.blit(source=self.surf, dest=self.rect)
-            self.menu_text(50, "The", COLOR_ORANGE, ((WIN_WIDTH / 2), 70))
-            self.menu_text(50, "StarShip", COLOR_ORANGE, ((WIN_WIDTH / 2), 120))
+            self.menu_text(50, "exterminator", COLOR_RED, ((WIN_WIDTH / 2), 70))
+            self.menu_text(50, "robot", COLOR_RED, ((WIN_WIDTH / 2), 120))
 
             for i in range(len(MENU_OPTION)):
                 if i == menu_option:
